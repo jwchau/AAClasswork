@@ -1,0 +1,4 @@
+ # exclude everything except directory foo/bar
+.DS_Store
+/W3D4/screwedoku/*
+
