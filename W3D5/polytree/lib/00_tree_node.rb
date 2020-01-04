@@ -46,8 +46,35 @@ class PolyTreeNode
         nil
     end
 
+    def print_tree
+        queue = [self]
+        until queue.empty?
+            root = queue.pop
+            print root.value
+            print " => "
+            root.children.each do |child| 
+                queue.unshift(child) 
+                print child.value
+            end
+            puts ""
+        end
+        nil
+    end
+
+    #go through every node
+        #print it's children, queue children
+        #repeat
+
     def inspect
         value
     end
 
 end
+
+# node = PolyTreeNode.new(0)
+# PolyTreeNode.new(1).parent = node
+# PolyTreeNode.new(2).parent = node
+# PolyTreeNode.new(3).parent = node.children[0]
+# PolyTreeNode.new(4).parent = node.children[0]
+# PolyTreeNode.new(5).parent = node.children[1]
+# PolyTreeNode.new(6).parent = node.children[1]
