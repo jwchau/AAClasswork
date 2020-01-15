@@ -102,17 +102,13 @@ def andrews_films_and_leads
   execute(<<-SQL)
     SELECT title, name
     FROM movies
-    JOIN castings
-      ON movies.id = castings.movie_id
-    JOIN actors
-      ON actors.id = castings.actor_id
+    JOIN castings ON movies.id = castings.movie_id
+    JOIN actors ON actors.id = castings.actor_id
     WHERE title IN (
       SELECT title
       FROM movies
-      JOIN castings
-        ON movies.id = castings.movie_id
-      JOIN actors
-        ON actors.id = castings.actor_id
+      JOIN castings ON movies.id = castings.movie_id
+      JOIN actors ON actors.id = castings.actor_id
       WHERE name = 'Julie Andrews'
     ) AND ord = 1;
   SQL
