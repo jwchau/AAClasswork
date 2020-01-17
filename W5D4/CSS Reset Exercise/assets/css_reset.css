@@ -1,0 +1,20 @@
+head, body, header, nav, ul, li, aside, section, footer, img, figure {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font-style: inherit;
+    list-style-type: none;
+}
+
+body {
+    line-height: 1.5;
+}
+
+figure {
+    width: 100%;
+}
+
+img {
+    /* display: block; */
+    width: inherit;
+}
