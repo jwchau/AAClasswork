@@ -1,0 +1,24 @@
+<h3>New Session Page</h3>
+<form action="<%= session_url %>" method="POST">
+    
+    <input type='hidden' name='authenticity_token'
+        value='<%= form_authenticity_token %>'/>
+        
+    <label>Username (email): 
+        <input type="text" name="session[email]">
+    </label>
+    <br>
+
+    <label>Password: 
+        <input type="password" name="session[password]">
+    </label>
+    <br>
+
+    <input type="submit" name="Login!">
+</form>
+
+<br>
+
+<% content_for :footer do %>
+    <p> To be or not to be! </p>
+<% end %>

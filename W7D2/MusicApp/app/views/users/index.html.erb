@@ -1,0 +1,11 @@
+<h3>Users Index</h3>
+
+<% @users.each do |user| %>
+    User id: <%= user.id %>
+    <ul> 
+        <li>
+            <a href="<%= user_url(user) %>"> email: <%= user.email %> </a> 
+        </li>
+    </ul>
+    <br>
+<% end %>

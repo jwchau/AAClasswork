@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MusicApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <% if logged_in? %>
+    <form action="<%= session_url %>" method="POST">
+        <input type='hidden' name='authenticity_token'
+      value='<%= form_authenticity_token %>'/>
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="logout">
+    </form>
+    <a href="<%= users_url %>"> All Users </a>
+    <h2>logged in as: <%= current_user[:email] %></h2>
+    <% else %>
+      <a href="<%= new_session_url %>">Login</a>
+      <a href="<%= new_user_url %>">Sign up</a>
+  <% end %>
+
+  <h4><%= flash[:succ] %></h4>
+  <h4><%= flash[:fail] %></h4>
+  <h4><%= flash[:errors] %></h4>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
+
+<footer>Property of Myusic Inc.
+  <%= yield :footer %>
+</footer>
