@@ -1,0 +1,19 @@
+.sections-nav {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid $light-gray;
+}
+
+.sections-nav > ul {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // text-align: end;
+}
+
+#all {
+  margin: 0;
+  height: 10px;
+  font-size: 8pt;
+}

@@ -1,0 +1,45 @@
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.main-nav li {
+  padding: 5px;
+  font-size: 14px;
+}
+
+.left-nav > ul,
+.right-nav > ul {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  
+}
+
+.left-nav > ul > li {
+  font-family: $sans-serif;
+  text-transform: uppercase;
+  // font-weight: 1000;
+}
+
+// .right-nav > ul > li {
+// }
+
+// .right-nav > ul > li:last-of-type {
+
+// }
+
+.left-nav > ul > li:hover,
+.right-nav > ul > li:last-of-type:hover {
+  background-color: $lightest-gray;
+}
+
+// .left-nav span {
+//   font-weight: 500;
+// }
+
+
+.right-nav i {
+  font-size: 20px;
+}

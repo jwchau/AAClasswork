@@ -1,0 +1,10 @@
+// Use the gear_dropdown.png screenshot as a style guide
+.gear-dropdown {
+  position: absolute;
+  // box-shadow: -5px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: -1px 4px 6px 1px rgba(0, 0, 0, 0.09);
+  border: 1px solid $light-gray;
+  background-color: whitesmoke;
+  z-index: 1;
+  right: 135px;
+}

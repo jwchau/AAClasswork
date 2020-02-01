@@ -1,0 +1,33 @@
+main *{ 
+  // border: 1px solid red;
+  display: flex;
+  justify-content: center;
+}
+
+#newsletter-signup{
+  width: 89%;
+  height: 20px;
+  box-sizing: content-box;
+  padding: 5px;
+  padding-left: 20px;
+  align-items: center;
+  margin: 0;
+  
+  // justify-content: center;
+}
+
+#newsletter-signup button {
+  height: 100%;
+  padding: 0px;
+  font-size: 10px;
+  position: relative;
+  right: 1px;
+  padding-left: 2px;
+  padding-right: 2px;
+  
+}
+
+// .opinion {
+//   display: flex;
+//   justify-content: center;
+// }
