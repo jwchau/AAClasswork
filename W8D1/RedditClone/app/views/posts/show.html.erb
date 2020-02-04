@@ -1,0 +1,14 @@
+<h3>showing post</h3>
+
+<%= @post.title %>
+<%= @post.url %>
+<%= @post.content %>
+
+
+<form action="<%= post_url(@post) %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="DELETE">
+    <button>Delete Post</button>
+</form>
+
+<%# <%Sub.where(id: @post.sub_id).pluck(:title).each do ||%> %>
