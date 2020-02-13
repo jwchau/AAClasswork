@@ -1,0 +1,23 @@
+/* PHASE 9: Forms */
+.content-main {
+    display: flex;
+    /* justify-content: space-between; */
+    /* position: absolute; */
+}
+
+.content-main form {
+    background-color: lightgray;
+    margin: 10px;
+}
+
+
+.content-main .thumb {
+    position: relative;
+
+}
+
+.input form {
+    display: flex;
+    flex-direction: column;
+
+}

@@ -1,0 +1,28 @@
+h1 {
+    font-size: 100px;
+    margin: 0 auto;
+}
+
+.hanoi {
+    margin-top: 300px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.disc {
+    height: 20px;
+    width: 100px;
+    position: absolute;
+    bottom: 100px;
+    background-color: grey;
+}
+
+[id="0"] {
+    width: 100px;
+}
+.pile {
+    position: relative;
+    background-color: black;
+    height: 30px;
+    width: 100px;
+}
