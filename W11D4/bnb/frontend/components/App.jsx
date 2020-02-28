@@ -4,6 +4,7 @@ import GreetingContainer from './greetings/greeting_container';
 import LFC from './sessions/LoginFormContainer';
 import SFC from './sessions/SignupFormContainer';
 import { AuthRoute } from '../util/route_util';
+import BenchIndexContainer from '../components/benches/bench_index_container';
 
 
 const App = () => (
@@ -15,6 +16,7 @@ const App = () => (
       <AuthRoute path='/login' component={LFC} />
       <Route path='/' render={() => <div className='splash'>Splashin'</div>}/>
     </Switch>
+    <Route exact path="/" component={BenchIndexContainer} />
   </div>
 );
 

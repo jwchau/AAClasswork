@@ -4895,9 +4895,16 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _bench_actions = __webpack_require__(217);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//for testing
+
+
+window.fetchBenches = _bench_actions.fetchBenches;
 
 document.addEventListener("DOMContentLoaded", function () {
     var store = void 0;
@@ -4913,6 +4920,9 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
         store = (0, _store2.default)();
     }
+
+    window.dispatch = store.dispatch;
+    window.getState = store.getState;
 
     var root = document.getElementById("root");
     _reactDom2.default.render(_react2.default.createElement(_root2.default, { store: store }), root);
@@ -4949,6 +4959,10 @@ var _SignupFormContainer2 = _interopRequireDefault(_SignupFormContainer);
 
 var _route_util = __webpack_require__(85);
 
+var _bench_index_container = __webpack_require__(220);
+
+var _bench_index_container2 = _interopRequireDefault(_bench_index_container);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
@@ -4973,7 +4987,8 @@ var App = function App() {
             'Splashin\''
           );
         } })
-    )
+    ),
+    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _bench_index_container2.default })
   );
 };
 
@@ -5206,10 +5221,15 @@ var _users_reducer = __webpack_require__(84);
 
 var _users_reducer2 = _interopRequireDefault(_users_reducer);
 
+var _benches_reducer = __webpack_require__(218);
+
+var _benches_reducer2 = _interopRequireDefault(_benches_reducer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var entitiesReducer = (0, _redux.combineReducers)({
-    users: _users_reducer2.default
+    users: _users_reducer2.default,
+    benches: _benches_reducer2.default
 });
 
 exports.default = entitiesReducer;
@@ -39482,6 +39502,213 @@ module.exports = function(originalModule) {
 	return module;
 };
 
+
+/***/ }),
+/* 216 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var fetchBenches = exports.fetchBenches = function fetchBenches() {
+    return $.ajax({
+        method: 'GET',
+        url: '/api/benches',
+        error: function error(err) {
+            return console.log(err);
+        }
+    });
+};
+
+/***/ }),
+/* 217 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.fetchBenches = exports.receiveBenches = exports.RECEIVE_BENCHES = undefined;
+
+var _bench_api_util = __webpack_require__(216);
+
+var BenchAPI = _interopRequireWildcard(_bench_api_util);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var RECEIVE_BENCHES = exports.RECEIVE_BENCHES = "RECEIVE_BENCHES";
+
+var receiveBenches = exports.receiveBenches = function receiveBenches(benches) {
+    return {
+        type: RECEIVE_BENCHES,
+        benches: benches
+    };
+};
+
+var fetchBenches = exports.fetchBenches = function fetchBenches() {
+    return function (dispatch) {
+        return BenchAPI.fetchBenches().then(function (resp) {
+            return dispatch(receiveBenches(resp));
+        });
+    };
+};
+
+/***/ }),
+/* 218 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _bench_actions = __webpack_require__(217);
+
+exports.default = function () {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var action = arguments[1];
+
+    Object.freeze(state);
+    switch (action.type) {
+        case _bench_actions.RECEIVE_BENCHES:
+            return action.benches;
+        default:
+            return state;
+    }
+};
+
+/***/ }),
+/* 219 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _bench_index_item = __webpack_require__(221);
+
+var _bench_index_item2 = _interopRequireDefault(_bench_index_item);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var BenchIndex = function (_React$Component) {
+    _inherits(BenchIndex, _React$Component);
+
+    function BenchIndex() {
+        _classCallCheck(this, BenchIndex);
+
+        return _possibleConstructorReturn(this, (BenchIndex.__proto__ || Object.getPrototypeOf(BenchIndex)).apply(this, arguments));
+    }
+
+    _createClass(BenchIndex, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {}
+        // request benches from your API here
+
+
+        //START HERE IOANSDFOAINSDFOANISDOFIN
+
+    }, {
+        key: "render",
+        value: function render() {
+            var _Object$values = Object.values(this.props.benches),
+                benches = _Object$values.benches;
+
+            benches = benches.map(function (bench) {
+                return _react2.default.createElement(_bench_index_item2.default, null);
+            });
+        }
+    }]);
+
+    return BenchIndex;
+}(_react2.default.Component);
+
+exports.default = BenchIndex;
+
+/***/ }),
+/* 220 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _reactRedux = __webpack_require__(11);
+
+var _bench_actions = __webpack_require__(217);
+
+var _bench_index = __webpack_require__(219);
+
+var _bench_index2 = _interopRequireDefault(_bench_index);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var MSTP = function MSTP(state, ownProps) {
+    return {
+        benches: state.benches
+    };
+};
+
+var MDTP = function MDTP(dispatch) {
+    return {
+        fetchBenches: function fetchBenches() {
+            return dispatch((0, _bench_actions.fetchBenches)());
+        }
+    };
+};
+
+exports.default = (0, _reactRedux.connect)(MSTP, MDTP)(_bench_index2.default);
+
+/***/ }),
+/* 221 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (props) {
+
+    return _react2.default.createElement(
+        "span",
+        null,
+        " I am bench index item "
+    );
+};
 
 /***/ })
 /******/ ]);
