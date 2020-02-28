@@ -1,5 +1,7 @@
  # exclude everything except directory foo/bar
 .DS_Store
 /W3D4/screwedoku/*
-*tmp*
+tmp/
+node_modules/
+log/
 
