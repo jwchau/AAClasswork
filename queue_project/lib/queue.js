@@ -1,12 +1,12 @@
 // ============================================================================
-// Implementation Exercise: Stack
+// Implementation Exercise: Queue
 // ============================================================================
 //
 // -------
 // Prompt:
 // -------
 //
-// Implement a Stack and all of its methods below!
+// Implement a Queue and all of its methods below!
 //
 // ------------
 // Constraints:
@@ -27,34 +27,28 @@ class Node {
   }
 }
 
-class Stack {
+class Queue {
   constructor() {
-    this.top = null;
-    this.bottom = null;
+    this.front = null;
+    this.back = null;
     this.length = 0;
   }
 
-  push(val) {
-    const node = new Node(val);
+  enqueue(val) {
+    
 
-    if (this.top) node.next = this.top;
-    this.top = node;
-    if (!this.bottom) this.bottom = node;
-
-    this.length++;
-    return this.length;
   }
 
-  pop() {
-    if (!this.top) return null;
-    let temp = this.top;
-    this.top = this.top.next;
+  dequeue() {
+    
+
     this.length--;
     if (this.length === 0) {
-      this.top = null;
-      this.bottom = null;
+      this.front = null;
+      this.back = null;
     }
-    return temp.value;
+
+    return temp;
   }
 
   size() {
@@ -64,4 +58,4 @@ class Stack {
 }
 
 exports.Node = Node;
-exports.Stack = Stack;
+exports.Queue = Queue;
