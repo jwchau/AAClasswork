@@ -61,7 +61,18 @@
 // -----------
 function hasCycle(linkedList) {
   // TODO: Implement the hasCycle function!
-
+  let count = 0;
+  let tortoise = linkedList.head;
+  let hare = linkedList.head.next;
+  while (tortoise && hare && count < linkedList.length) {
+    if (tortoise.value === hare.value) return true;
+    if (hare.next === null) return false;
+    
+    tortoise = tortoise.next;
+    hare = hare.next.next;
+    count++;
+  }
+  return false;
 }
 
 

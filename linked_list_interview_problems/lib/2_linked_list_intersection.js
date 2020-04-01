@@ -41,7 +41,22 @@
 // -----------
 function linkedListIntersection(list1, list2) {
   // TODO: Implement the hasCycle function!
+  const hash = {};
 
+  let curr = list1.head;
+  while (curr) {
+    hash[curr.value] = 1;
+    curr = curr.next;
+  }
+
+  curr = list2.head;
+  while (curr) {
+    if (hash[curr.value]) return curr;
+    else hash[curr.value] = 1;
+    curr = curr.next;
+  }
+
+  return null;
 }
 
 // ----------------------------------------
