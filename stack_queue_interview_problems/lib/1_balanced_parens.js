@@ -76,42 +76,22 @@
 // Let's code!
 // -----------
 function balancedParens(str) {
-  let last = "";
-  const parens = [];
-  const brax = [];
-  const curlys = [];
+  const stack = [];
+  const pairs = {
+    "(": ")",
+    "[": "]",
+    "{": "}",
+  }
+
   for (let i = 0; i < str.length; i++) {
     const c = str[i];
-    if (c === '(') {
-      parens.push(c);
-      last = c;
-
-    } else if (c === ')') {
-      if (parens.length < 1) return false;
-      else parens.pop();
-
-    } else if (c === '[') {
-       brax.push(c);
-       last = c;
-
-    } else if (c === ']') {
-      if (brax.length < 1) return false;
-      else brax.pop();
-
-    } else if (c === '{') {
-      curlys.push(c);
-      last = c;
-
-    } else if (c === '}') {
-      if (curlys.length < 1) return false;
-      else curlys.pop();
+    if (pairs[c]) stack.push(c);
+    if (c === '}' || c === ']' || c === ')') {
+      if (pairs[stack.pop()] !== c) return false;
     }
   }
-  if (parens.length > 0) return false;
-  else if (brax.length > 0) return false;
-  else if (curlys.length > 0) return false;
 
-  return true;
+  return stack.length === 0;
 }
 
 exports.balancedParens = balancedParens;
