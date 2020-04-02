@@ -1,11 +1,11 @@
 function depthFirstSearch(root, targetVal) {
 
-    const queue = [root];
-    while (queue.length !== 0) {
-        const curr = queue.pop();
+    const stack = [root];
+    while (stack.length !== 0) {
+        const curr = stack.pop();
         if (curr.val === targetVal) return curr;
-        queue.unshift(curr.left);
-        queue.
+        if (curr.right) stack.push(curr.right);
+        if (curr.left) stack.push(curr.left);
     }
 
     return null;
